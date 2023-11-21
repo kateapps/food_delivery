@@ -2,20 +2,37 @@ name: empiretest
 version: 1.0.0+1
 publish_to: none
 description: A new Flutter project.
-environment: 
-  sdk: '>=3.1.3 <4.0.0'
+environment:
+  sdk: ">=3.1.3 <4.0.0"
 
-dependencies: 
+dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.6
-  flutter: 
+  flutter_native_splash: ^2.3.6
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+
+  flutter:
     sdk: flutter
 
-dev_dependencies: 
+dev_dependencies:
   flutter_lints: ^2.0.0
-  flutter_test: 
+  flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.6
 
-flutter: 
+flutter:
   uses-material-design: true
 
+flutter_native_splash:
+  # color: "#424242"
+  background_image: "assets/img/launch_bg.png"
+  fullscreen: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/img/logo.png"
