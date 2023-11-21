@@ -1,23 +1,12 @@
+import 'package:empiretest/app/data/services/storage_service.dart';
+import 'package:empiretest/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class OnboardController extends GetxController {
-  //TODO: Implement OnboardController
+  var storageService = StorageService.to;
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void continueFirstLoad() {
+    storageService.setFirstLaunchData(false);
+    Get.offNamed(Routes.HOME);
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

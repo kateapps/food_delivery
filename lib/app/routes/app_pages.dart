@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/home/home_binding.dart';
 import '../modules/home/home_view.dart';
+import '../modules/initial/initial_binding.dart';
+import '../modules/initial/initial_view.dart';
 import '../modules/onboard/onboard_binding.dart';
 import '../modules/onboard/onboard_view.dart';
 
@@ -10,7 +12,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.INITIAL;
 
   static final routes = [
     GetPage(
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.ONBOARD,
       page: () => const OnboardView(),
       binding: OnboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.INITIAL,
+      page: () => const InitialView(),
+      binding: InitialBinding(),
     ),
   ];
 }

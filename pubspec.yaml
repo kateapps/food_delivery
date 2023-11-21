@@ -11,6 +11,7 @@ dependencies:
   flutter_native_splash: ^2.3.6
   hive_flutter: ^1.1.0
   hive: ^2.2.3
+  google_fonts: ^6.1.0
 
   flutter:
     sdk: flutter
@@ -25,6 +26,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/img/
+    - assets/img/onboard/
 
 flutter_native_splash:
   # color: "#424242"
