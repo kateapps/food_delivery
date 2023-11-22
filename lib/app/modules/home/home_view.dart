@@ -1,4 +1,8 @@
+import 'package:empiretest/app/core/colors.dart';
+import 'package:empiretest/app/modules/home/menu/menu_navigator.dart';
+import 'package:empiretest/app/widgets/scaffold_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 
@@ -8,16 +12,38 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+    return WillPopScope(
+      onWillPop: () async {
+        if (controller.activeTab == 0) {
+          Get.back(id: MenuNavigator.nestedKey);
+        }
+        return false;
+      },
+      child: Scaffold(
+        body: Obx(() => IndexedStack(
+              index: controller.activeTab,
+              children: controller.pages,
+            )),
+        bottomNavigationBar: Obx(() => BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            onTap: controller.changeTabIndex,
+            currentIndex: controller.activeTab,
+            type: BottomNavigationBarType.fixed,
+            items: controller.pageItems
+                .map((e) => BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      e.icon,
+                      colorFilter: const ColorFilter.mode(
+                          AppColors.white, BlendMode.srcIn),
+                    ),
+                    activeIcon: SvgPicture.asset(
+                      e.icon,
+                      colorFilter: const ColorFilter.mode(
+                          AppColors.main, BlendMode.srcIn),
+                    ),
+                    label: ""))
+                .toList())),
       ),
     );
   }

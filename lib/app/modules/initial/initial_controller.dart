@@ -22,6 +22,7 @@ class InitialController extends GetxController {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
       systemNavigationBarContrastEnforced: false,
       systemNavigationBarColor: Get.theme.primaryColor,
+      statusBarBrightness: Brightness.dark,
     ));
     FlutterNativeSplash.remove();
     super.onReady();

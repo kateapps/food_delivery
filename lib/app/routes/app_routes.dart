@@ -7,6 +7,11 @@ abstract class Routes {
   static const HOME = _Paths.HOME;
   static const ONBOARD = _Paths.ONBOARD;
   static const INITIAL = _Paths.INITIAL;
+  static const MENU = _Paths.HOME + _Paths.MENU;
+  static const ORDER = _Paths.HOME + _Paths.ORDER;
+  static const SETTINGS = _Paths.HOME + _Paths.SETTINGS;
+  static const QR = _Paths.QR;
+  static const COUPON = _Paths.COUPON;
 }
 
 abstract class _Paths {
@@ -14,4 +19,9 @@ abstract class _Paths {
   static const HOME = '/home';
   static const ONBOARD = '/onboard';
   static const INITIAL = '/initial';
+  static const MENU = '/menu';
+  static const ORDER = '/order';
+  static const SETTINGS = '/settings';
+  static const QR = '/qr';
+  static const COUPON = '/coupon';
 }

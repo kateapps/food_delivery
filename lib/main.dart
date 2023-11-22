@@ -16,6 +16,7 @@ void main() async {
       theme: buildTheme(),
       title: "Application",
       initialRoute: AppPages.INITIAL,
+      navigatorKey: Get.nestedKey(1),
       getPages: AppPages.routes,
     ),
   );
