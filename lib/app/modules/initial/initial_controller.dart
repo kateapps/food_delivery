@@ -1,6 +1,5 @@
 import 'package:empiretest/app/data/services/storage_service.dart';
 import 'package:empiretest/app/routes/app_pages.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
