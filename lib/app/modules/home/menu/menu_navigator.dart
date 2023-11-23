@@ -1,4 +1,6 @@
+import 'package:empiretest/app/data/models/category.dart';
 import 'package:empiretest/app/modules/home/menu/allmenu/allmenu_view.dart';
+import 'package:empiretest/app/modules/home/menu/category/category_binding.dart';
 import 'package:empiretest/app/modules/home/menu/category/category_view.dart';
 import 'package:empiretest/app/modules/home/menu/product/product_view.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ class MenuNavigator extends StatelessWidget {
           case MenuRoutes.allmenu:
             return MenuPages.allmenuPage;
           case MenuRoutes.category:
-            return MenuPages.categoryPage;
+            return MenuPages.categoryPage(settings);
           default:
             return null;
         }
@@ -50,13 +52,15 @@ abstract class MenuPages {
         page: () => const AllmenuPage(),
       );
 
+  static categoryPage(RouteSettings settings) => GetPageRoute(
+        routeName: MenuRoutes.category,
+        page: () => const CategoryPage(),
+        binding: CategoryBinding(settings.arguments as Category),
+        settings: settings,
+      );
+
   static get productPage => GetPageRoute(
         routeName: MenuRoutes.product,
         page: () => const ProductPage(),
-      );
-
-  static get categoryPage => GetPageRoute(
-        routeName: MenuRoutes.category,
-        page: () => const CategoryPage(),
       );
 }

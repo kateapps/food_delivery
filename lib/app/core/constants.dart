@@ -8,6 +8,13 @@ abstract class ImagesPath {
   static const mainBackground = '$_folder/launch_bg.png';
   static const scaffoldBackground = '$_folder/bg.png';
   static const onBoardMain = '$_folder/onboard/main.png';
+
+  static const _categoryFolder = '$_folder/categories';
+  static const appetizersPicture = '$_categoryFolder/apper.png';
+  static const sushiPicture = '$_categoryFolder/sushi.png';
+  static const ricePicture = '$_categoryFolder/rice.png';
+  static const soupPicture = '$_categoryFolder/soup.png';
+  static const dessertPicture = '$_categoryFolder/dessert.png';
 }
 
 abstract class IconsPath {

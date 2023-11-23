@@ -1,4 +1,5 @@
 import 'package:empiretest/app/core/theme.dart';
+import 'package:empiretest/app/data/services/api_service.dart';
 import 'package:empiretest/app/data/services/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
@@ -24,4 +25,5 @@ void main() async {
 
 Future<void> initServices() async {
   await Get.putAsync(() => StorageService().init());
+  await Get.putAsync(() => ApiService().init());
 }

@@ -1,6 +1,5 @@
 import 'package:empiretest/app/core/colors.dart';
 import 'package:empiretest/app/modules/home/menu/menu_navigator.dart';
-import 'package:empiretest/app/widgets/scaffold_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -36,11 +35,13 @@ class HomeView extends GetView<HomeController> {
                       e.icon,
                       colorFilter: const ColorFilter.mode(
                           AppColors.white, BlendMode.srcIn),
+                      width: 30,
                     ),
                     activeIcon: SvgPicture.asset(
                       e.icon,
                       colorFilter: const ColorFilter.mode(
                           AppColors.main, BlendMode.srcIn),
+                      width: 30,
                     ),
                     label: ""))
                 .toList())),
