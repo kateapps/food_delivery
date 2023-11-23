@@ -23,4 +23,8 @@ class StorageService extends GetxService {
     print(box.get(StorageKeys.firstLaunch.name));
     return this;
   }
+
+  void clear() {
+    box.clear();
+  }
 }

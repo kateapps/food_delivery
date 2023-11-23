@@ -2,7 +2,7 @@
 import 'package:empiretest/app/core/constants.dart';
 import 'package:empiretest/app/modules/home/menu/menu_navigator.dart';
 import 'package:empiretest/app/modules/home/order/order_view.dart';
-import 'package:empiretest/app/modules/home/settings/settings_view.dart';
+import 'package:empiretest/app/modules/home/settings/setting_navigator.dart';
 import 'package:empiretest/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   var pages = [
     const MenuNavigator(),
     const OrderView(),
-    const SettingsView(),
+    const SettingsNavigator(),
   ];
 
   var pageItems = [

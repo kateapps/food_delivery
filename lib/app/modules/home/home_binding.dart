@@ -1,7 +1,6 @@
 import 'package:empiretest/app/modules/home/menu/allmenu/allmenu_controller.dart';
-import 'package:empiretest/app/modules/home/menu/category/category_controller.dart';
 import 'package:empiretest/app/modules/home/order/order_controller.dart';
-import 'package:empiretest/app/modules/home/settings/settings_controller.dart';
+import 'package:empiretest/app/modules/home/settings/settings_page/settings_controller.dart';
 import 'package:get/get.dart';
 
 import 'home_controller.dart';
