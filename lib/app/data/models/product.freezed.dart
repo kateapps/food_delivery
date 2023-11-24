@@ -24,7 +24,7 @@ mixin _$Product {
   int get categoryId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
+  int get price => throw _privateConstructorUsedError;
   int get portion => throw _privateConstructorUsedError;
   String get imgUrl => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ProductCopyWith<$Res> {
       int categoryId,
       String name,
       String description,
-      double price,
+      int price,
       int portion,
       String imgUrl,
       int count});
@@ -92,7 +92,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       portion: null == portion
           ? _value.portion
           : portion // ignore: cast_nullable_to_non_nullable
@@ -121,7 +121,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       int categoryId,
       String name,
       String description,
-      double price,
+      int price,
       int portion,
       String imgUrl,
       int count});
@@ -167,7 +167,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as double,
+              as int,
       null == portion
           ? _value.portion
           : portion // ignore: cast_nullable_to_non_nullable
@@ -204,7 +204,7 @@ class _$ProductImpl extends _Product {
   @override
   final String description;
   @override
-  final double price;
+  final int price;
   @override
   final int portion;
   @override
@@ -260,7 +260,7 @@ abstract class _Product extends Product {
       final int categoryId,
       final String name,
       final String description,
-      final double price,
+      final int price,
       final int portion,
       final String imgUrl,
       {final int count}) = _$ProductImpl;
@@ -277,7 +277,7 @@ abstract class _Product extends Product {
   @override
   String get description;
   @override
-  double get price;
+  int get price;
   @override
   int get portion;
   @override

@@ -57,6 +57,7 @@ class CategoryPage extends GetView<CategoryController> {
                   return Container(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
+                      dense: true,
                       onTap: () => controller.toProduct(product),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
@@ -64,8 +65,10 @@ class CategoryPage extends GetView<CategoryController> {
                       tileColor: AppColors.grey.withOpacity(.2),
                       title: Text(
                         product.name,
-                        style: Get.textTheme.titleMedium!
+                        style: Get.textTheme.titleSmall!
                             .copyWith(fontWeight: FontWeight.bold),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       subtitle: Text(
                         product.description,
@@ -74,10 +77,17 @@ class CategoryPage extends GetView<CategoryController> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      contentPadding:
-                          const EdgeInsets.all(Constants.defaultPadding * .6),
-                      leading: Image.asset(
-                        product.imgUrl,
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: Constants.defaultPadding * .6),
+                      leading: SizedBox.square(
+                        dimension: 60,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            product.imgUrl,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       trailing: Obx(() => CounterButton(
                             price: product.price,

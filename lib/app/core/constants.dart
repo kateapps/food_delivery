@@ -1,3 +1,5 @@
+import 'dart:math';
+
 abstract class Constants {
   static const defaultBoolBox = 'bool_app_box';
   static const defaultPadding = 16.0;
@@ -15,6 +17,12 @@ abstract class ImagesPath {
   static const ricePicture = '$_categoryFolder/rice.png';
   static const soupPicture = '$_categoryFolder/soup.png';
   static const dessertPicture = '$_categoryFolder/dessert.png';
+
+  static const _productFolder = '$_folder/products';
+  static getProductPicture(int id) {
+    if (id < 1 || id > 30) id = Random().nextInt(30) + 1;
+    return "$_productFolder/$id.png";
+  }
 }
 
 abstract class IconsPath {

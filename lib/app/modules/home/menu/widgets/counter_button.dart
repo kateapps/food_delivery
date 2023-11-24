@@ -28,7 +28,7 @@ extension _CounterButtonSizeExtension on CounterButtonSize {
 }
 
 class CounterButton extends StatelessWidget {
-  final double price;
+  final int price;
   final int? count;
   final Function? increment;
   final Function? decrement;
@@ -53,7 +53,7 @@ class CounterButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: size.padding / 2, vertical: size.padding / 3),
             decoration: BoxDecoration(
-              color: AppColors.main,
+              color: AppColors.main.withOpacity(.0),
               borderRadius: BorderRadius.circular(Constants.defaultPadding),
             ),
             child: Text(

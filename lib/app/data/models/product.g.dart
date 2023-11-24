@@ -12,7 +12,7 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       json['categoryId'] as int,
       json['name'] as String,
       json['description'] as String,
-      (json['price'] as num).toDouble(),
+      json['price'] as int,
       json['portion'] as int,
       json['imgUrl'] as String,
       count: json['count'] as int? ?? 0,

@@ -24,8 +24,8 @@ class OrderController extends GetxController {
 
   void clearOrder() => order.clear();
 
-  double getSumm() {
-    var summ = .0;
+  int getSumm() {
+    var summ = 0;
     for (var element in order.values) {
       summ += element.price * element.count;
     }

@@ -37,6 +37,7 @@ flutter:
     - assets/img/
     - assets/img/onboard/
     - assets/img/categories/
+    - assets/img/products/
     - assets/icons/
 
 flutter_native_splash:

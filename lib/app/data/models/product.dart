@@ -11,7 +11,7 @@ class Product with _$Product {
     int categoryId,
     String name,
     String description,
-    double price,
+    int price,
     int portion,
     String imgUrl, {
     @Default(0) int count,

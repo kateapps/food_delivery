@@ -9,6 +9,7 @@ class ApiService extends GetxService {
   static ApiService get to => Get.find();
 
   final Random _random = Random();
+  RxList<Product> products = RxList.empty();
 
   Future<List<Category>> getCategories() async {
     await Future.delayed(_getDuration());
@@ -17,13 +18,15 @@ class ApiService extends GetxService {
 
   Future<List<Product>> getProducts(int category) async {
     await Future.delayed(_getDuration());
-    return FakeData.products.where((p) => p.categoryId == category).toList();
+    return products.where((p) => p.categoryId == category).toList();
   }
 
   Duration _getDuration() =>
       Duration(milliseconds: _random.nextInt(1500) + 300);
 
   Future<ApiService> init() async {
+    products.value = FakeData.generateProductList();
+    print(products.value);
     return this;
   }
 }
