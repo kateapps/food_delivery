@@ -1,23 +1,17 @@
+import 'dart:math';
+
+import 'package:empiretest/app/core/fake_data.dart';
+import 'package:empiretest/app/data/models/coupon.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CouponController extends GetxController {
-  //TODO: Implement CouponController
+  var rnd = Random();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
+  final multy = 3;
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  List<Coupon> get coupons => FakeData.coupons;
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  Color getRandomColor() =>
+      FakeData.couponColors[rnd.nextInt(FakeData.couponColors.length)];
 }

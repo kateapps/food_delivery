@@ -3,6 +3,7 @@ import 'package:empiretest/app/core/constants.dart';
 import 'package:empiretest/app/data/models/category.dart';
 import 'package:empiretest/app/modules/home/menu/allmenu/allmenu_controller.dart';
 import 'package:empiretest/app/modules/home/menu/menu_navigator.dart';
+import 'package:empiretest/app/modules/home/order/order_controller.dart';
 import 'package:empiretest/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,8 +43,6 @@ class AllmenuPage extends GetView<AllmenuController> {
                   future: controller.getCategories(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
-                      print("EOE");
-                      print(snapshot.data);
                       List<Category> categories =
                           snapshot.data as List<Category>;
                       return ListView.builder(
@@ -51,8 +50,10 @@ class AllmenuPage extends GetView<AllmenuController> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           Category category = snapshot.data?[index] as Category;
+                          var orderController = Get.find<OrderController>();
                           return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: Constants.defaultPadding / 2),
                             child: ListTile(
                               enableFeedback: true,
                               shape: RoundedRectangleBorder(

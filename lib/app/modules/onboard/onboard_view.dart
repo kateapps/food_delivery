@@ -63,27 +63,31 @@ class OnboardView extends GetView<OnboardController> {
                 ),
               ),
               const Flexible(child: SizedBox()),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Text.rich(
-                  TextSpan(children: [
-                    const TextSpan(
-                        text: 'Нажимая продолжить вы соглашаетесь с нашими \n'),
-                    TextSpan(
-                      text: 'Правилами пользования',
-                      style: const TextStyle(color: AppColors.main),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => print("Need to show terms"),
-                    ),
-                    const TextSpan(text: '  и '),
-                    TextSpan(
-                      text: 'Политикой конфиденциальности',
-                      style: const TextStyle(color: AppColors.main),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => print("Need to show Privacy"),
-                    ),
-                  ], style: Get.textTheme.labelSmall),
-                  textAlign: TextAlign.center,
+              Padding(
+                padding: const EdgeInsets.all(Constants.defaultPadding),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text.rich(
+                    TextSpan(children: [
+                      const TextSpan(
+                          text:
+                              'Нажимая продолжить вы соглашаетесь с нашими \n'),
+                      TextSpan(
+                        text: 'Правилами пользования',
+                        style: const TextStyle(color: AppColors.main),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => print("Need to show terms"),
+                      ),
+                      const TextSpan(text: '  и '),
+                      TextSpan(
+                        text: 'Политикой конфиденциальности',
+                        style: const TextStyle(color: AppColors.main),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => print("Need to show Privacy"),
+                      ),
+                    ], style: Get.textTheme.labelSmall),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ],

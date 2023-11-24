@@ -13,7 +13,8 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       json['name'] as String,
       json['description'] as String,
       (json['price'] as num).toDouble(),
-      (json['portion'] as num).toDouble(),
+      json['portion'] as int,
+      json['imgUrl'] as String,
       count: json['count'] as int? ?? 0,
     );
 
@@ -25,5 +26,6 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'description': instance.description,
       'price': instance.price,
       'portion': instance.portion,
+      'imgUrl': instance.imgUrl,
       'count': instance.count,
     };

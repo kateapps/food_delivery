@@ -4,6 +4,8 @@ import 'package:empiretest/app/core/constants.dart';
 import 'package:empiretest/app/data/models/product.dart';
 import 'package:empiretest/app/modules/home/menu/category/category_controller.dart';
 import 'package:empiretest/app/modules/home/menu/menu_navigator.dart';
+import 'package:empiretest/app/modules/home/menu/widgets/counter_button.dart';
+import 'package:empiretest/app/modules/home/order/order_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +14,7 @@ class CategoryPage extends GetView<CategoryController> {
 
   @override
   Widget build(BuildContext context) {
+    var orderController = Get.find<OrderController>();
     return Scaffold(
       appBar: AppBar(
         title: Text(controller.category.name),
@@ -21,7 +24,8 @@ class CategoryPage extends GetView<CategoryController> {
         ),
       ),
       body: SafeArea(
-        minimum: const EdgeInsets.all(Constants.defaultPadding),
+        minimum:
+            const EdgeInsets.symmetric(horizontal: Constants.defaultPadding),
         child: FutureBuilder(
           future: controller.getProducts(),
           builder: (context, snapshot) {
@@ -46,13 +50,14 @@ class CategoryPage extends GetView<CategoryController> {
                   ),
                 );
               }
-              return ListView.builder(
+              return (ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (context, index) {
                   var product = products[index];
-                  return Padding(
+                  return Container(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
+                      onTap: () => controller.toProduct(product),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                               Constants.defaultPadding * .6)),
@@ -66,19 +71,23 @@ class CategoryPage extends GetView<CategoryController> {
                         product.description,
                         style: Get.textTheme.labelMedium!
                             .copyWith(color: AppColors.grey),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       contentPadding:
                           const EdgeInsets.all(Constants.defaultPadding * .6),
                       leading: Image.asset(
-                        ImagesPath.dessertPicture,
+                        product.imgUrl,
                       ),
-                      trailing: CustomizableCounter(
-                        backgroundColor: AppColors.main,
-                        buttonText: "${product.price} р.",
-                        borderRadius: Constants.defaultPadding,
-                        textSize: 15,
-                        borderColor: Colors.transparent,
-                      ),
+                      trailing: Obx(() => CounterButton(
+                            price: product.price,
+                            count: orderController.getCountProduct(product),
+                            increment: () =>
+                                orderController.incrementProductCount(product),
+                            decrement: () =>
+                                orderController.decrementProductCount(product),
+                          )),
+
                       // trailing: TextButton(
                       //   style: TextButton.styleFrom(
                       //     enableFeedback: true,
@@ -92,7 +101,7 @@ class CategoryPage extends GetView<CategoryController> {
                     ),
                   );
                 },
-              );
+              ));
             }
             return const Center(
               child: CircularProgressIndicator(

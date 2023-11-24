@@ -1,3 +1,4 @@
+import 'package:empiretest/app/modules/home/settings/about_us/about_us_view.dart';
 import 'package:empiretest/app/modules/home/settings/bonuses/bonuses_view.dart';
 import 'package:empiretest/app/modules/home/settings/settings_page/settings_view.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +14,17 @@ class SettingsNavigator extends StatelessWidget {
       key: Get.nestedKey(nestedKey),
       initialRoute: SettingsRoutes.initial,
       onGenerateRoute: (settings) {
-        print('GENERATE $settings');
         if (settings.name == '/') return null;
         switch (settings.name) {
           case SettingsRoutes.settings:
             return SettingsPages.settings;
+          case SettingsRoutes.bonuses:
+            return SettingsPages.bonusesPage;
+          case SettingsRoutes.aboutUs:
+            return SettingsPages.aboutUsPage;
           default:
             return null;
         }
-      },
-      onPopPage: (route, result) {
-        print('OWOWW');
-        return false;
       },
     );
   }
@@ -50,5 +50,10 @@ abstract class SettingsPages {
   static get bonusesPage => GetPageRoute(
         routeName: SettingsRoutes.bonuses,
         page: () => const BonusesView(),
+      );
+
+  static get aboutUsPage => GetPageRoute(
+        routeName: SettingsRoutes.aboutUs,
+        page: () => const AboutUsView(),
       );
 }

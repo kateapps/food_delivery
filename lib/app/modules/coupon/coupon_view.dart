@@ -1,5 +1,6 @@
 import 'package:empiretest/app/core/colors.dart';
 import 'package:empiretest/app/core/constants.dart';
+import 'package:empiretest/app/core/fake_data.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -27,30 +28,34 @@ class CouponView extends GetView<CouponController> {
             ),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 20,
+            itemCount: controller.coupons.length * controller.multy,
             itemBuilder: (context, index) {
+              var coupon =
+                  controller.coupons[index % controller.coupons.length];
               return Stack(
                 children: [
                   Card(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8)),
-                    color: AppColors.main,
-                    child: const Padding(
-                      padding: EdgeInsets.only(
+                    color: controller.getRandomColor(),
+                    child: ListTile(
+                      onTap: () {},
+                      contentPadding: const EdgeInsets.only(
                         top: Constants.defaultPadding / 2,
                         left: Constants.defaultPadding / 2,
                         right: Constants.defaultPadding / 4,
                         bottom: Constants.defaultPadding / 4,
                       ),
-                      child: ListTile(
-                        title: Text(
-                          "КУПОН -15%",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                          "За красивые глаза",
-                          style: TextStyle(fontSize: 11),
-                        ),
+                      title: Text(
+                        "КУПОН -${coupon.discount}%",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            overflow: TextOverflow.ellipsis),
+                      ),
+                      subtitle: Text(
+                        coupon.title,
+                        style: const TextStyle(
+                            fontSize: 11, overflow: TextOverflow.ellipsis),
                       ),
                     ),
                   ),

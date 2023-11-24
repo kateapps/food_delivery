@@ -5,13 +5,15 @@ part 'product.g.dart';
 
 @freezed
 class Product with _$Product {
+  const Product._();
   factory Product(
     int id,
     int categoryId,
     String name,
     String description,
     double price,
-    double portion, {
+    int portion,
+    String imgUrl, {
     @Default(0) int count,
   }) = _Product;
 

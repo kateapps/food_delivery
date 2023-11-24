@@ -1,7 +1,10 @@
 import 'package:empiretest/app/data/models/category.dart';
+import 'package:empiretest/app/data/models/product.dart';
 import 'package:empiretest/app/modules/home/menu/allmenu/allmenu_view.dart';
 import 'package:empiretest/app/modules/home/menu/category/category_binding.dart';
 import 'package:empiretest/app/modules/home/menu/category/category_view.dart';
+import 'package:empiretest/app/modules/home/menu/product/product_binding.dart';
+import 'package:empiretest/app/modules/home/menu/product/product_controller.dart';
 import 'package:empiretest/app/modules/home/menu/product/product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,21 +18,19 @@ class MenuNavigator extends StatelessWidget {
     return Navigator(
       key: Get.nestedKey(nestedKey),
       initialRoute: MenuRoutes.initial,
+      onUnknownRoute: (settings) => null,
       onGenerateRoute: (settings) {
-        print('GENERATE $settings');
-        if (settings.name == '/') return null;
+        Get.routing.args = settings.arguments;
         switch (settings.name) {
           case MenuRoutes.allmenu:
             return MenuPages.allmenuPage;
           case MenuRoutes.category:
-            return MenuPages.categoryPage(settings);
+            return MenuPages.categoryPage;
+          case MenuRoutes.product:
+            return MenuPages.productPage;
           default:
             return null;
         }
-      },
-      onPopPage: (route, result) {
-        print('OWOWW');
-        return false;
       },
     );
   }
@@ -52,15 +53,16 @@ abstract class MenuPages {
         page: () => const AllmenuPage(),
       );
 
-  static categoryPage(RouteSettings settings) => GetPageRoute(
+  static get categoryPage => GetPageRoute(
         routeName: MenuRoutes.category,
         page: () => const CategoryPage(),
-        binding: CategoryBinding(settings.arguments as Category),
-        settings: settings,
+        binding: CategoryBinding(),
+        // settings: settings,
       );
 
   static get productPage => GetPageRoute(
         routeName: MenuRoutes.product,
         page: () => const ProductPage(),
+        binding: ProductBinding(),
       );
 }

@@ -1,23 +1,42 @@
+import 'package:empiretest/app/data/models/product.dart';
 import 'package:get/get.dart';
 
 class OrderController extends GetxController {
-  //TODO: Implement OrderController
+  RxMap<int, Product> order = RxMap();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  void incrementProductCount(Product product) {
+    if (order.containsKey(product.id)) {
+      order.update(product.id,
+          (value) => product.copyWith(count: order[product.id]!.count + 1));
+    } else {
+      order[product.id] = product.copyWith(count: 1);
+    }
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void decrementProductCount(Product product) {
+    if (order[product.id]?.count == 1) {
+      order.remove(product.id);
+    } else {
+      order.update(product.id,
+          (value) => product.copyWith(count: order[product.id]!.count - 1));
+    }
   }
 
-  @override
-  void onClose() {
-    super.onClose();
+  void clearOrder() => order.clear();
+
+  double getSumm() {
+    var summ = .0;
+    for (var element in order.values) {
+      summ += element.price * element.count;
+    }
+    return summ;
   }
 
-  void increment() => count.value++;
+  int getCountProduct(Product product) => order[product.id]?.count ?? 0;
+
+  int getAmountProductsInCategory(int categoryId) {
+    var list =
+        order.values.where((element) => element.categoryId == categoryId);
+    return list.length;
+  }
 }
