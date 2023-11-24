@@ -53,7 +53,8 @@ class CounterButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: size.padding / 2, vertical: size.padding / 3),
             decoration: BoxDecoration(
-              color: AppColors.main.withOpacity(.0),
+              color: AppColors.main
+                  .withOpacity(size == CounterButtonSize.small ? .0 : 1),
               borderRadius: BorderRadius.circular(Constants.defaultPadding),
             ),
             child: Text(

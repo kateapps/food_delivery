@@ -50,9 +50,7 @@ class AllmenuPage extends GetView<AllmenuController> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           Category category = snapshot.data?[index] as Category;
-                          var orderController = Get.find<OrderController>();
-                          var amount = orderController
-                              .getAmountProductsInCategory(category.id);
+
                           return Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: Constants.defaultPadding / 2),
@@ -65,39 +63,47 @@ class AllmenuPage extends GetView<AllmenuController> {
                                   Constants.defaultPadding * .6),
                               tileColor: AppColors.grey.withOpacity(.25),
                               title: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      category.name.toUpperCase(),
-                                      style: Get.textTheme.titleMedium!
-                                          .copyWith(
-                                              fontWeight: FontWeight.bold),
-                                    ),
-                                    if (amount > 0)
-                                      Container(
-                                        width: 30,
-                                        // height: 30,
-                                        margin: const EdgeInsets.only(left: 8),
-                                        // padding: const EdgeInsets.symmetric(
-                                        //     horizontal: 2),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: AppColors.main,
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            amount.toString(),
-                                            style: const TextStyle(
+                                child: Obx(() {
+                                  var orderController =
+                                      Get.find<OrderController>();
+                                  var amount = orderController
+                                      .getAmountProductsInCategory(category.id);
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        category.name.toUpperCase(),
+                                        style: Get.textTheme.titleMedium!
+                                            .copyWith(
                                                 fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.center,
+                                      ),
+                                      if (amount > 0)
+                                        Container(
+                                          width: 30,
+                                          // height: 30,
+                                          margin:
+                                              const EdgeInsets.only(left: 8),
+                                          // padding: const EdgeInsets.symmetric(
+                                          //     horizontal: 2),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: AppColors.main,
                                           ),
-                                        ),
-                                      )
-                                  ],
-                                ),
+                                          child: Center(
+                                            child: Text(
+                                              amount.toString(),
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        )
+                                    ],
+                                  );
+                                }),
                               ),
                               trailing: const Icon(Icons.chevron_right_rounded),
                               leading: ClipRRect(
